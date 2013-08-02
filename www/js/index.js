@@ -7,7 +7,7 @@ function loadRbeRSS() {
 	$.ajax({
 		type: 'GET',
 		dataType: 'xml',
-        url: 'http://feeds.feedburner.com/VociProtestanti?format=xml',
+        url: 'http://rbe.it/news/wp-rss2.php',
         success: function(data,stato) {
 	        $('#content').html("Bene, ci siamo");
         },
