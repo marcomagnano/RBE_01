@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.rbe" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>RBE – L’applicazione ufficiale</name>
+    <name>RBE – Applicazione ufficiale</name>
     <description>
         Streaming, feeds di rbe.it e di VociProtestanti.
     </description>
