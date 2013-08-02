@@ -1,7 +1,4 @@
-var TITLE = "RBE Feeds";
-var RSS = "http://rbe.it/news/wp-rss2.php";
-
-$('#reposHome').bind('pageinit', function(event) {
+$('#mainPage').bind('pageinit', function(event) {
 	loadRbeRSS();
 });
 
@@ -9,15 +6,15 @@ function loadRbeRSS() {
 
 	$.ajax({
 		type: 'GET',
-        dataType: 'xml',
-        url: 'rbe.it/news/feed/',
+		dataType: 'xml',
+        url: 'http://feeds.feedburner.com/VociProtestanti?format=xml',
         success: function(data,stato) {
-	        $('content').html(data);
+	        $('#content').html("Bene, ci siamo");
         },
         error: function(richiesta,stato,errori) {
-	        alert(errori);
+	        $('#content').html("Male male");
         }
-	})
+	});
 }
 
 function getUrlVars() {
