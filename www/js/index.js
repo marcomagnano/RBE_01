@@ -1,10 +1,6 @@
-$(document).ready(function(){
-	setContent();
+$('#reposHome').bind('pageinit', function(event) {
+	loadRepos();
 });
-
-//$('#reposHome').bind('pageinit', function(event) {
-//	setContent();
-//});
 
 function loadRepos() {
     $.ajax("https://api.github.com/legacy/repos/search/javascript").done(function(data) {
