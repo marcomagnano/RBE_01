@@ -1,47 +1,56 @@
-$('#reposHome').bind('pageinit', function(event) {
-	loadRepos();
+$(document).ready(function() {
+
+//EDIT THESE LINES
+//Title of the blog
+var TITLE = "RBE - Radio Beckwith Evangelica";
+//RSS url
+var RSS = "http://rbe.it/news/wp-rss2.php";
+//Stores entries
+var entries = [];
+var selectedEntry = "";
+
+//listen for detail links
+$(".contentLink").live("click", function() {
+selectedEntry = $(this).data("entryid");
 });
 
-function loadRepos() {
-    $.ajax("https://api.github.com/legacy/repos/search/javascript").done(function(data) {
-        var i, repo;
-        $.each(data.repositories, function (i, repo) {
-            $("#allRepos").append("<li><a href='rbe-detail.html?owner=" + repo.username + "&name=" + repo.name + "'>"
-            + "<h4>" + repo.name + "</h4>"
-            + "<p>" + repo.username + "</p></a></li>");
-        });
-        $('#allRepos').listview('refresh');
-    });
-}
+//Listen for main page
+$("#mainPage").live("pageinit", function() {
 
-function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
+//Set the title
+$("h1", this).text(TITLE);
 
-$('#reposDetail').live('pageshow', function(event) {
-    var owner = getUrlVars().owner;
-    var name = getUrlVars().name;
-    loadRepoDetail(owner,name);
+$.get(RSS, {}, function(res, code) {
+var xml = $(res);
+var items = xml.find("item");
+$.each(items, function(i, v) {
+entry = { 
+title:$(v).find("title").text(), 
+link:$(v).find("link").text(), 
+description:$.trim($(v).find("description").text())
+};
+entries.push(entry);
 });
 
-function loadRepoDetail(owner,name) {
-     $.ajax("https://api.github.com/repos/" + owner + "/" + name).done(function(data) {
-         var repo = data;
-         console.log(data);
+//now draw the list
+var s = '';
+$.each(entries, function(i, v) {
+s += '<li><a href="#contentPage" class="contentLink" data-entryid="'+i+'">' + v.title + '</a></li>';
+});
+$("#linksList").append(s);
+$("#linksList").listview("refresh");
+});
 
-         $('#repoName').html("<a href='" + repo.homepage + "'>" + repo.name + "</a>");
-         $('#description').text(repo.description);
-         $('#forks').html("<strong>Forks:</strong> " + repo.forks + "<br><strong>Watchers:</strong> " + repo.watchers);
+});
 
-         $('#avatar').attr('src', repo.owner.avatar_url);
-         $('#ownerName').html("<strong>Owner:</strong> <a href='" + repo.owner.url + "'>" + repo.owner.login + "</a>");
-     });
-}
+//Listen for the content page to load
+$("#contentPage").live("pageshow", function(prepage) {
+//Set the title
+$("h1", this).text(entries[selectedEntry].title);
+var contentHTML = "";
+contentHTML += entries[selectedEntry].description;
+contentHTML += '<p/><a href="'+entries[selectedEntry].link + '">Read Entry on Site</a>';
+$("#entryText",this).html(contentHTML);
+});
+
+});
