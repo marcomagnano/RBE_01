@@ -1,5 +1,5 @@
 $('#reposHome').bind('pageinit', function(event) {
-	loadRepos();
+	setContent();
 });
 
 function loadRepos() {
@@ -12,4 +12,8 @@ function loadRepos() {
         });
         $('#allRepos').listview('refresh');
     });
+}
+
+function setContent() {
+	$("#allRepos").append("<li><h2>test</h2></li>");
 }
