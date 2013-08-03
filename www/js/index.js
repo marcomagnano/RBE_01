@@ -2,6 +2,10 @@ $('#mainPage').bind('pageinit', function(event) {
 	loadRbeRSS();
 });
 
+$('#contentPage').bind('pageinit', function(event) {
+	loadRbeRSSDetail();
+});
+
 function loadRbeRSS() {
 	$('#content').html('Connessione in corso...');
 	$.ajax({
@@ -14,15 +18,15 @@ function loadRbeRSS() {
 	          $(data).find('item').each(function(){  
   
 	            var $article = $(this);   
-	            var title = $article.find("title").text();  
+	            var title = $article.find("title").text();
 	            var description = $article.find('description').text();  
 	            //var imageurl = $book.attr('imageurl');  
 	  
 	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
 	            var html = '<li>';
 	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
-	            html += '<h3 class="title">' + title + '</h3>';  
-	            html += '<p> ' + description + '</p>' ;  
+	            html += '<a href="rbe-detail.html"><h3 class="title">' + title + '</h3></a>';  
+	            // html += '<p> ' + description + '</p>' ;  
 	            html += '</li>';  
 	  
 	            $('#linksList').append(html);  
@@ -36,6 +40,45 @@ function loadRbeRSS() {
 	        $('#content').html("Male male: " + stato);
         }
 	});
+}
+
+function getDetail(pos) {
+	$.ajax({
+		type: 'GET',
+        //url: 'http://rbe.it/news/wp-rss2.php',
+        url: 'localfeed.xml',
+        success: function(data,stato) {
+	          $('#content').html("Bene anche il dettaglio");
+	          
+	          $(data).find('item:eq(' + pos + ')').each(function(){  
+  
+	            var $article = $(this);
+	            var title = $article.find("title").text();
+	            var description = $article.find('description').text();  
+	            //var imageurl = $book.attr('imageurl');  
+	  
+	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
+	            var html = '<li>';
+	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
+	            html += '<a href="rbe-detail.html"><h3 class="title">' + title + '</h3></a>';  
+	            // html += '<p> ' + description + '</p>' ;  
+	            html += '</li>';  
+	  
+	            $('#linksList').append(html);  
+	            $('#linksList').append(html);
+	            //$('.loadingPic').fadeOut(1400);  
+	        });
+	          
+	          //console.log(data);
+        },
+        error: function(richiesta,stato,errori) {
+	        $('#content').html("Male male: " + stato);
+        }
+	});
+}
+
+function loadRbeRSSDetail() {
+	alert("This");
 }
 
 function getUrlVars() {
