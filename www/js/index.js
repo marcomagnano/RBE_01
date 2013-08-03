@@ -9,37 +9,10 @@ function loadRbeRSS() {
 		dataType: 'xml',
         url: 'http://rbe.it/news/wp-rss2.php',
         success: function(data,stato) {
-	        var rss = $(rss);
-	          var html = '';
-	          var items = rss.find('item');
-	          var feedTitle = $('channel > title:first-child', rss).text();
-	          var feedLink = $('channel > title:first-child + link', rss).text();
-	          var feedDesc = $('channel > title:first-child + link + description', rss).text();
-	          
-	          html += '<h1><a href="' + feedLink + '">' + feedTitle + '</a></h1>';
-	          html += '<div>' + feedDesc + '</div>';
-	          html += '<ul>';
-	          
-	          items.each(function() {
-	          
-	            var item = $(this);
-	            var desc = item.find('description').text();
-	            var link = item.find('link').text();
-	            var title = item.find('title').text();
-	            
-	            html += '<li><a href="' + link + '">' +
-	                     title + '</a>' + 
-	                     '<p>' + desc + '</p></li>';
-	          
-	          
-	          });
-	          
-	          html += '</ul>';
-	          
-	          $('#content').html(html);
+	          $('#content').html("Bene bene");
         },
         error: function(richiesta,stato,errori) {
-	        $('#content').html("Male male");
+	        $('#content').html("Male male: " + stato);
         }
 	});
 }
