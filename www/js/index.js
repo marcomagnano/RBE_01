@@ -3,10 +3,9 @@ $('#mainPage').bind('pageinit', function(event) {
 });
 
 function loadRbeRSS() {
-
+	$('#content').html('Connessione in corso...');
 	$.ajax({
 		type: 'GET',
-		dataType: 'xml',
         url: 'http://rbe.it/news/wp-rss2.php',
         success: function(data,stato) {
 	          $('#content').html("Bene bene");
