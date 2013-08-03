@@ -6,9 +6,31 @@ function loadRbeRSS() {
 	$('#content').html('Connessione in corso...');
 	$.ajax({
 		type: 'GET',
-        url: 'http://rbe.it/news/wp-rss2.php',
+        //url: 'http://rbe.it/news/wp-rss2.php',
+        url: 'localfeed.xml',
         success: function(data,stato) {
 	          $('#content').html("Bene bene");
+	          
+	          $(data).find('item').each(function(){  
+  
+	            var $article = $(this);   
+	            var title = $article.find("title").text();  
+	            var description = $article.find('description').text();  
+	            //var imageurl = $book.attr('imageurl');  
+	  
+	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
+	            var html = '<li>';
+	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
+	            html += '<h3 class="title">' + title + '</h3>';  
+	            html += '<p> ' + description + '</p>' ;  
+	            html += '</li>';  
+	  
+	            $('#linksList').append(html);  
+	            
+	            //$('.loadingPic').fadeOut(1400);  
+	        });
+	          
+	          //console.log(data);
         },
         error: function(richiesta,stato,errori) {
 	        $('#content').html("Male male: " + stato);
