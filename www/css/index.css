@@ -41,7 +41,6 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
@@ -58,6 +57,61 @@ body {
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
+
+.ui-footer.ui-bar-a {
+	border: none;
+	border-top: 3px solid #fff;
+	background: #dfdfdf;
+	color: #222;
+	font-weight: normal;
+	text-shadow: none;
+}
+
+.ui-footer.ui-bar-a ul {
+	padding: 0;
+	margin: 0;
+}
+
+.ui-footer.ui-bar-a li {
+	float: left;
+	width: 34%;
+	display: block;
+	line-height: 40px;
+	text-align: center;
+	background: #dfdfdf;
+}
+.ui-footer.ui-bar-a li.alpha,
+.ui-footer.ui-bar-a li.omega {
+	width: 33%;
+}
+
+.ui-footer.ui-bar-a li a {
+	width: 100%;
+	display: block;
+	border-bottom: 5px solid #dfdfdf;
+}
+
+.ui-footer.ui-bar-a li a:hover,
+.ui-footer.ui-bar-a li a:visited:hover {
+	border-bottom-color: #c00;
+}
+
+.ui-footer.ui-bar-a li a:active {
+	background: #fcc;
+}
+
+#mainNavigation {
+	height: 45px;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+.ui-content {
+	padding-bottom: 50px !important;
+}
+
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
