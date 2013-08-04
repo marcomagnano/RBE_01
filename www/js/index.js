@@ -3,7 +3,10 @@ $('#mainPage').bind('pageinit', function(event) {
 });
 
 $('#contentPage').bind('pageinit', function(event) {
-	loadRbeRSSDetail();
+	var $hash = window.location.hash,
+		$pos = $hash.replace('#!', '');
+	//$('#entryText').html("Questa è una pagina dettaglio: " + $hash);
+	getDetail($pos);
 });
 
 function loadRbeRSS() {
@@ -14,7 +17,7 @@ function loadRbeRSS() {
         url: 'localfeed.xml',
         success: function(data,stato) {
 	          $('#content').html("Bene bene");
-	          
+	          var $i = 0;
 	          $(data).find('item').each(function(){  
   
 	            var $article = $(this);   
@@ -25,13 +28,14 @@ function loadRbeRSS() {
 	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
 	            var html = '<li>';
 	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
-	            html += '<a href="rbe-detail.html"><h3 class="title">' + title + '</h3></a>';  
+	            html += '<a href="rbe-detail.html#!' + $i + '"><h3 class="title">' + title + '</h3></a>';  
 	            // html += '<p> ' + description + '</p>' ;  
 	            html += '</li>';  
 	  
 	            $('#linksList').append(html);  
 	            
 	            //$('.loadingPic').fadeOut(1400);  
+	            $i++;
 	        });
 	          
 	          //console.log(data);
@@ -61,11 +65,10 @@ function getDetail(pos) {
 	            var html = '<li>';
 	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
 	            html += '<a href="rbe-detail.html"><h3 class="title">' + title + '</h3></a>';  
-	            // html += '<p> ' + description + '</p>' ;  
+	            html += '<p> ' + description + '</p>' ;  
 	            html += '</li>';  
 	  
-	            $('#linksList').append(html);  
-	            $('#linksList').append(html);
+	            $('#entryText').html(html);
 	            //$('.loadingPic').fadeOut(1400);  
 	        });
 	          
