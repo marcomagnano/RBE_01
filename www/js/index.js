@@ -1,132 +1,134 @@
-$( document ).on( "pageinit", "#streamingPage", function( event ) {
-	playStream();
-});
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
 
-$( document ).on( "pageinit", "#mainRbePage", function( event ) {
-	loadRbeRSS();
-});
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
 
-$( document ).on( "pageinit", "#contentPage", function( event ) {
-	var $hash = window.location.hash,
-		$pos = $hash.replace('#!', '');
-	//$('#entryText').html("Questa è una pagina dettaglio: " + $hash);
-	getRbeDetail($pos);
-});
-
-function playStream() {
-  try {
-    var myaudio = new Audio('http://stream15.top-ix.it/radiobeckwith.ogg');
-    myaudio.id = 'playerMyAdio';
-    myaudio.play();
-  } catch (e) {
-    alert('no audio support!');
-  } 
-}
+        console.log('Received Event: ' + id);
+    },
 
 
-function loadRbeRSS() {
-	$('#content').html('Connessione in corso...');
-	$.ajax({
-		type: 'GET',
-        //url: 'http://rbe.it/news/wp-rss2.php',
-        url: 'localfeed.xml',
-        success: function(data,stato) {
-	          $('#content').html("Bene bene");
-	          var $i = 0;
-	          $(data).find('item').each(function(){  
-  
-	            var $article = $(this);   
-	            var title = $article.find("title").text();
-	            var description = $article.find('description').text();  
-	            //var imageurl = $book.attr('imageurl');  
-	  
-	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
-	            var html = '<li>';
-	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
-	            html += '<a href="rbe-detail.html#!' + $i + '"><h3 class="title">' + title + '</h3></a>';  
-	            // html += '<p> ' + description + '</p>' ;  
-	            html += '</li>';  
-	  
-	            $('#linksList').append(html);  
-	            
-	            //$('.loadingPic').fadeOut(1400);  
-	            $i++;
-	        });
-	          
-	          //console.log(data);
-        },
-        error: function(richiesta,stato,errori) {
-	        $('#content').html("Male male: " + stato);
-        }
-	});
-}
+    blog: function(){
+        function getBlogs() {
+            var dfd = $.Deferred();
+            $.ajax({
+                url: 'http://rbe.it/news/api/get_recent_posts/',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    var source   = $("#blog-template").html();
+                    var template = Handlebars.compile(source);
+                    var blogData = template(data);
+                    $('#blog-data').html(blogData);
+                    $('#blog-data').trigger('create');
+                    dfd.resolve(data);
 
-function getRbeDetail(pos) {
-	$.ajax({
-		type: 'GET',
-        //url: 'http://rbe.it/news/wp-rss2.php',
-        url: 'localfeed.xml',
-        success: function(data,stato) {
-	          $('#content').html("Bene anche il dettaglio");
-	          
-	          $(data).find('item:eq(' + pos + ')').each(function(){  
-  
-	            var $article = $(this);
-	            var title = $article.find("title").text();
-	            var description = $article.find('description').text();  
-	            //var imageurl = $book.attr('imageurl');  
-	  
-	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
-	            var html = '<li>';
-	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
-	            html += '<h3 class="title">' + title + '</h3>';  
-	            html += '<p> ' + description + '</p>' ;  
-	            html += '</li>';  
-	  
-	            $('#entryText').html(html);
-	            //$('.loadingPic').fadeOut(1400);  
-	        });
-	          
-	          //console.log(data);
-        },
-        error: function(richiesta,stato,errori) {
-	        $('#content').html("Male male: " + stato);
-        }
-	});
-}
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+            return dfd.promise();
+        };
 
-function loadRbeRSSDetail() {
-	alert("This");
-}
+        getBlogs().then(function(data){
+            $('#all-posts').on('click','li', function(e){                
+                localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
+            });
+        });
 
-function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
+        
+    },
+    
+    VPblog: function(){
+        function getBlogs() {
+            var dfd = $.Deferred();
+            $.ajax({
+                url: 'http://vociprotestanti.it/api/get_recent_posts/',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    var source   = $("#blog-template").html();
+                    var template = Handlebars.compile(source);
+                    var blogData = template(data);
+                    $('#blog-data').html(blogData);
+                    $('#blog-data').trigger('create');
+                    dfd.resolve(data);
+
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+            return dfd.promise();
+        };
+
+        getBlogs().then(function(data){
+            $('#all-posts').on('click','li', function(e){                
+                localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
+            });
+        });
+
+        
+    },
+    single: function() {
+        
+            var postDataStorage = localStorage.getItem('postData');
+            var source   = $("#single-template").html();
+            var template = Handlebars.compile(source);
+            var postData = template(JSON.parse(postDataStorage));    
+            $('#single-data').html(postData);
+
+    },
+    VPsingle: function() {
+        
+            var postDataStorage = localStorage.getItem('postData');
+            var source   = $("#single-template").html();
+            var template = Handlebars.compile(source);
+            var postData = template(JSON.parse(postDataStorage));    
+            $('#single-data').html(postData);
+
+    },
+
+    portfolio: function(){
+        $.ajax({
+            url: 'http://alexbachuk.com/?json=get_recent_posts&post_type=portfolio',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                var source   = $("#portfolio-template").html();
+                var template = Handlebars.compile(source);
+                var portfolioData = template(data);
+                $('#portfolio-data').html(portfolioData);
+                $('#portfolio-data').trigger('create');
+
+            },
+            error: function(data){
+                console.log(data);
+            }
+        });
     }
-    return vars;
-}
 
-//$(document).on('pageshow', '#reposDetail', function(event) {
-//    var owner = getUrlVars().owner;
- //   var name = getUrlVars().name;
-//    loadRepoDetail(owner,name);
-//});
-
-function loadRepoDetail(owner,name) {
-     $.ajax("https://api.github.com/repos/" + owner + "/" + name).done(function(data) {
-         var repo = data;
-         console.log(data);
-
-         $('#repoName').html("<a href='" + repo.homepage + "'>" + repo.name + "</a>");
-         $('#description').text(repo.description);
-         $('#forks').html("<strong>Forks:</strong> " + repo.forks + "<br><strong>Watchers:</strong> " + repo.watchers);
-
-         $('#avatar').attr('src', repo.owner.avatar_url);
-         $('#ownerName').html("<strong>Owner:</strong> <a href='" + repo.owner.url + "'>" + repo.owner.login + "</a>");
-     });
-}
+};
