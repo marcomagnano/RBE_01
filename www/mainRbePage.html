@@ -14,38 +14,38 @@
     <body>
 
     <div id="blog-page" data-role="page">
-    <div data-role="header">
-        <h1>RBE – Ultimi articoli</h1>
-    </div><!-- /#header -->
+	    <div data-role="header">
+	        <h1>RBE – Ultimi articoli</h1>
+	    </div><!-- /#header -->
     
-    <div id="blog-content" data-role="content">
-        
-        
-        <div id="blog-data"></div>
-
-
-        <script id="blog-template" type="text/x-handlebars-template">
-            <ul data-role="listview" data-inset="true" id="all-posts">
-            
-            {{#each posts}}
-                
-                <li>
-                	<a data-transition="slide" href="rbe-detail.html?{{@index}}">{{title}}</a>
-                </li>
-
-            {{/each}}
-            </ul>
-        </script>
-    </div><!-- /#home-page -->
+	    <div id="blog-content" data-role="content">
+	        
+	        
+	        <div id="blog-data"></div>
+	
+	
+	        <script id="blog-template" type="text/x-handlebars-template">
+	            <ul data-role="listview" data-inset="true" id="all-posts">
+	            
+	            {{#each posts}}
+	                
+	                <li>
+	                	<a data-transition="slide" href="rbe-detail.html?{{@index}}">{{title}}</a>
+	                </li>
+	
+	            {{/each}}
+	            </ul>
+	        </script>
+	    </div><!-- /#home-page -->
     
-    <div data-role="footer" id="footer">
-		<ul id="mainNavigation">
-    		<li class="alpha"><a href="index.html">Streaming</a></li>
-    		<li><a href="mainRbePage.html">RBE</a></li>
-    		<li class="omega"><a href="mainVpPage.html">Voci Protestanti</a></li>
-		</ul>
-	</div>
-
+	    <div data-role="footer" id="footer">
+			<ul id="mainNavigation">
+	    		<li class="alpha"><a href="index.html">Streaming</a></li>
+	    		<li><a href="mainRbePage.html">RBE</a></li>
+	    		<li class="omega"><a href="mainVpPage.html">Voci Protestanti</a></li>
+			</ul>
+		</div>
+    </div>
 
 
 
