@@ -1,3 +1,15 @@
+Handlebars.registerHelper("debug", function(optionalValue) {
+  console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+ 
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -63,7 +75,7 @@ var app = {
     },
     
     VPblog: function(){
-        function getBlogs() {
+        function getVPBlogs() {
             var dfd = $.Deferred();
             $.ajax({
                 url: 'http://vociprotestanti.it/api/get_recent_posts/',
@@ -85,7 +97,7 @@ var app = {
             return dfd.promise();
         };
 
-        getBlogs().then(function(data){
+        getVPBlogs().then(function(data){
             $('#all-posts').on('click','li', function(e){                
                 localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
             });
@@ -110,25 +122,6 @@ var app = {
             var postData = template(JSON.parse(postDataStorage));    
             $('#single-data').html(postData);
 
-    },
-
-    portfolio: function(){
-        $.ajax({
-            url: 'http://alexbachuk.com/?json=get_recent_posts&post_type=portfolio',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data){
-                var source   = $("#portfolio-template").html();
-                var template = Handlebars.compile(source);
-                var portfolioData = template(data);
-                $('#portfolio-data').html(portfolioData);
-                $('#portfolio-data').trigger('create');
-
-            },
-            error: function(data){
-                console.log(data);
-            }
-        });
     }
 
 };
