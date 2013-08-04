@@ -1,4 +1,4 @@
-$('#mainPage').bind('pageinit', function(event) {
+$('#mainRbePage').bind('pageinit', function(event) {
 	loadRbeRSS();
 });
 
@@ -6,8 +6,19 @@ $('#contentPage').bind('pageinit', function(event) {
 	var $hash = window.location.hash,
 		$pos = $hash.replace('#!', '');
 	//$('#entryText').html("Questa è una pagina dettaglio: " + $hash);
-	getDetail($pos);
+	getRbeDetail($pos);
 });
+
+function playStream() {
+  try {
+    var myaudio = new Audio('http://stream15.top-ix.it/radiobeckwith.ogg');
+    myaudio.id = 'playerMyAdio';
+    myaudio.play();
+  } catch (e) {
+    alert('no audio support!');
+  } 
+}
+
 
 function loadRbeRSS() {
 	$('#content').html('Connessione in corso...');
@@ -46,7 +57,7 @@ function loadRbeRSS() {
 	});
 }
 
-function getDetail(pos) {
+function getRbeDetail(pos) {
 	$.ajax({
 		type: 'GET',
         //url: 'http://rbe.it/news/wp-rss2.php',
@@ -64,7 +75,7 @@ function getDetail(pos) {
 	            //var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';  
 	            var html = '<li>';
 	            //html += '<dd> <span class="loadingPic" alt="Loading" />';  
-	            html += '<a href="rbe-detail.html"><h3 class="title">' + title + '</h3></a>';  
+	            html += '<h3 class="title">' + title + '</h3>';  
 	            html += '<p> ' + description + '</p>' ;  
 	            html += '</li>';  
 	  
