@@ -1,8 +1,12 @@
-$('#mainRbePage').bind('pageinit', function(event) {
+$( document ).on( "pageinit", "#streamingPage", function( event ) {
+	playStream();
+});
+
+$( document ).on( "pageinit", "#mainRbePage", function( event ) {
 	loadRbeRSS();
 });
 
-$('#contentPage').bind('pageinit', function(event) {
+$( document ).on( "pageinit", "#contentPage", function( event ) {
 	var $hash = window.location.hash,
 		$pos = $hash.replace('#!', '');
 	//$('#entryText').html("Questa è una pagina dettaglio: " + $hash);
