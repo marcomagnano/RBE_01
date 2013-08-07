@@ -64,53 +64,18 @@ var app = {
 						var itadate = basedate.getDate() + ' ';
 							
 						switch(basemonth) {
-							case 1:
-							itadate += 'gennaio';
-							break;
-							
-							case 2:
-							itadate += 'febbraio';
-							break;
-							
-							case 3:
-							itadate += 'marzo';
-							break;
-							
-							case 4:
-							itadate += 'aprile';
-							break;
-							
-							case 5:
-							itadate += 'maggio';
-							break;
-							
-							case 6:
-							itadate += 'giugno';
-							break;
-							
-							case 7:
-							itadate += 'luglio';
-							break;
-							
-							case 8:
-							itadate += 'agosto';
-							break;
-							
-							case 9:
-							itadate += 'settembre';
-							break;
-							
-							case 10:
-							itadate += 'ottobre';
-							break;
-							
-							case 11:
-							itadate += 'novembre';
-							break;
-							
-							case 12:
-							itadate += 'dicembre';
-							break;
+							case 1:		itadate += 'gennaio'; 	break;
+							case 2: 	itadate += 'febbraio'; 	break;
+							case 3: 	itadate += 'marzo'; 	break;
+							case 4: 	itadate += 'aprile'; 	break;
+							case 5: 	itadate += 'maggio'; 	break;
+							case 6: 	itadate += 'giugno'; 	break;
+							case 7: 	itadate += 'luglio'; 	break;
+							case 8: 	itadate += 'agosto'; 	break;
+							case 9: 	itadate += 'settembre';	break;
+							case 10: 	itadate += 'ottobre'; 	break;
+							case 11: 	itadate += 'novembre'; 	break;
+							case 12: 	itadate += 'dicembre'; 	break;
 						}
 						
 						itadate += ' ' + basedate.getFullYear();
@@ -130,11 +95,11 @@ var app = {
                     	
                     	
                     	
-	                    buffy += '<li>';
+	                    buffy += '<li><a data-transition="slide" href="rbe-detail.html?' + postid + '">';
 	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
-	                	buffy += '<h2 class="entry-title"><a data-transition="slide" href="rbe-detail.html?' + postid + '">' + postcontent.title + '</a></h2>';
+	                	buffy += '<h2 class="entry-title">' + postcontent.title + '</h2>';
 	                	buffy += '<span class="date">' + itadate + '</span>';
-	                	buffy += '</li>';
+	                	buffy += '</a></li>';
                     });
                     
                     $('#all-posts').html(buffy);
@@ -157,7 +122,7 @@ var app = {
 
         getBlogs().then(function(data){
         	$('#page-loader').fadeOut(600);
-            $('#all-posts').on('click','li', function(e){                
+            $('#all-posts').on('click','li', function(e){
                 localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
             });
         });
@@ -186,53 +151,18 @@ var app = {
 						var itadate = basedate.getDate() + ' ';
 							
 						switch(basemonth) {
-							case 1:
-							itadate += 'gennaio';
-							break;
-							
-							case 2:
-							itadate += 'febbraio';
-							break;
-							
-							case 3:
-							itadate += 'marzo';
-							break;
-							
-							case 4:
-							itadate += 'aprile';
-							break;
-							
-							case 5:
-							itadate += 'maggio';
-							break;
-							
-							case 6:
-							itadate += 'giugno';
-							break;
-							
-							case 7:
-							itadate += 'luglio';
-							break;
-							
-							case 8:
-							itadate += 'agosto';
-							break;
-							
-							case 9:
-							itadate += 'settembre';
-							break;
-							
-							case 10:
-							itadate += 'ottobre';
-							break;
-							
-							case 11:
-							itadate += 'novembre';
-							break;
-							
-							case 12:
-							itadate += 'dicembre';
-							break;
+							case 1:		itadate += 'gennaio'; 	break;
+							case 2: 	itadate += 'febbraio'; 	break;
+							case 3: 	itadate += 'marzo'; 	break;
+							case 4: 	itadate += 'aprile'; 	break;
+							case 5: 	itadate += 'maggio'; 	break;
+							case 6: 	itadate += 'giugno'; 	break;
+							case 7: 	itadate += 'luglio'; 	break;
+							case 8: 	itadate += 'agosto'; 	break;
+							case 9: 	itadate += 'settembre';	break;
+							case 10: 	itadate += 'ottobre'; 	break;
+							case 11: 	itadate += 'novembre'; 	break;
+							case 12: 	itadate += 'dicembre'; 	break;
 						}
 						
 						itadate += ' ' + basedate.getFullYear();
@@ -252,11 +182,11 @@ var app = {
                     	
                     	
                     	
-	                    buffy += '<li>';
+	                    buffy += '<li><a data-transition="slide" href="vp-detail.html?' + postid + '">';
 	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
-	                	buffy += '<h2 class="entry-title"><a data-transition="slide" href="vp-detail.html?' + postid + '">' + postcontent.title + '</a></h2>';
+	                	buffy += '<h2 class="entry-title">' + postcontent.title + '</h2>';
 	                	buffy += '<span class="date">' + itadate + '</span>';
-	                	buffy += '</li>';
+	                	buffy += '</a></li>';
                     });
                     
                     $('#all-posts').html(buffy);
@@ -288,20 +218,98 @@ var app = {
     },
     single: function() {
         
-            var postDataStorage = localStorage.getItem('postData');
-            var source   = $("#single-template").html();
-            var template = Handlebars.compile(source);
-            var postData = template(JSON.parse(postDataStorage));    
-            $('#single-data').html(postData);
-
+            //var postDataStorage = localStorage.getItem('postData');
+            //var source   = $("#single-template").html();
+            //var template = Handlebars.compile(source);
+            //var postData = template(JSON.parse(postDataStorage));    
+            //$('#single-data').html(postData);
+            var postDataStorage = localStorage.getItem('postData'),
+            	postData = JSON.parse(postDataStorage),
+            	buffy = '';
+            //console.log(postData);
+            
+            var post_thumbnail = postData.thumbnail;
+            
+            if(post_image != null) {
+            var	post_image = post_thumbnail.replace('-150x150.jpg','.jpg');
+            }
+            	
+            var basedate = new Date(postData.date),
+				basemonth = basedate.getMonth()+1,
+				post_thumbnail = '',
+				itadate = basedate.getDate() + ' ';
+				
+			switch(basemonth) {
+				case 1:		itadate += 'gennaio'; 	break;
+				case 2: 	itadate += 'febbraio'; 	break;
+				case 3: 	itadate += 'marzo'; 	break;
+				case 4: 	itadate += 'aprile'; 	break;
+				case 5: 	itadate += 'maggio'; 	break;
+				case 6: 	itadate += 'giugno'; 	break;
+				case 7: 	itadate += 'luglio'; 	break;
+				case 8: 	itadate += 'agosto'; 	break;
+				case 9: 	itadate += 'settembre';	break;
+				case 10: 	itadate += 'ottobre'; 	break;
+				case 11: 	itadate += 'novembre'; 	break;
+				case 12: 	itadate += 'dicembre'; 	break;
+			}
+			
+			itadate += ' ' + basedate.getFullYear();
+            
+            	buffy += '<h1 class="entry-title">' + postData.title + '</h1>';
+            	buffy += '<span class="entry-date">' + itadate + '</span>';
+            if(post_thumbnail != '' && post_thumbnail != null) {
+	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
+            }
+            	buffy += '<div class="entry-content">' + postData.content + '</div>';
+            
+            $('#single-data').html(buffy);
     },
     VPsingle: function() {
         
-            var postDataStorage = localStorage.getItem('postData');
-            var source   = $("#single-template").html();
-            var template = Handlebars.compile(source);
-            var postData = template(JSON.parse(postDataStorage));    
-            $('#single-data').html(postData);
-
+            //var postDataStorage = localStorage.getItem('postData');
+            //var source   = $("#single-template").html();
+            //var template = Handlebars.compile(source);
+            //var postData = template(JSON.parse(postDataStorage));    
+            //$('#single-data').html(postData);
+            
+            var postDataStorage = localStorage.getItem('postData'),
+            	postData = JSON.parse(postDataStorage),
+            	buffy = '';
+            //console.log(postData);
+            
+            var post_thumbnail = postData.thumbnail,
+            	post_image = post_thumbnail.replace('-150x150.jpg','.jpg');
+            	
+            var basedate = new Date(postData.date),
+				basemonth = basedate.getMonth()+1,
+				post_thumbnail = '',
+				itadate = basedate.getDate() + ' ';
+				
+			switch(basemonth) {
+				case 1:		itadate += 'gennaio'; 	break;
+				case 2: 	itadate += 'febbraio'; 	break;
+				case 3: 	itadate += 'marzo'; 	break;
+				case 4: 	itadate += 'aprile'; 	break;
+				case 5: 	itadate += 'maggio'; 	break;
+				case 6: 	itadate += 'giugno'; 	break;
+				case 7: 	itadate += 'luglio'; 	break;
+				case 8: 	itadate += 'agosto'; 	break;
+				case 9: 	itadate += 'settembre';	break;
+				case 10: 	itadate += 'ottobre'; 	break;
+				case 11: 	itadate += 'novembre'; 	break;
+				case 12: 	itadate += 'dicembre'; 	break;
+			}
+			
+			itadate += ' ' + basedate.getFullYear();
+            
+            	buffy += '<h1 class="entry-title">' + postData.title + '</h1>';
+            	buffy += '<span class="entry-date">' + itadate + '</span>';
+            if(post_thumbnail != '') {
+	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
+            }
+            	buffy += '<div class="entry-content">' + postData.content + '</div>';
+            
+            $('#single-data').html(buffy);
     }
 };

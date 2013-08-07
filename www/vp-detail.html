@@ -13,7 +13,7 @@
     <div id="single-post-page" data-role="page">
     <div data-role="header" id="header">
     	<a href="mainVpPage.html" data-rel="back" class="goBack">&laquo; Tutti gli articoli</a>
-        <h1>RBE</h1>
+        <img id="logo-vp" class="logo" src="img/logo-vp.png" alt="logo-vp" width="255" height="45" />
     </div><!-- /#header -->
     
     <div id="blog-content" data-role="content">
@@ -22,10 +22,7 @@
         <div id="single-data"></div>
 
 
-        <script id="single-template" type="text/x-handlebars-template">
-            <h1>{{title}}</h1>
-            {{{content}}}
-        </script>
+        
     </div><!-- /#home-page -->
     
     <div data-role="footer">
@@ -44,7 +41,7 @@
         <script type="text/javascript" src="js/libs/handlebars.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.single();
+            app.VPsingle();
         </script>
     </body>
 </html>

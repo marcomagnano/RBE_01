@@ -106,11 +106,21 @@ body {
 	height: 45px;
 	background: #ddd;
 	border-bottom: 1px solid #b8b8b8;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
 }
 
 #header h1 {
 	line-height: 45px;
 }
+
+#header .logo {
+	display: block;
+	margin: 0 auto;
+}
+
 #header .goBack:link,
 #header .goBack:visited {
 	float: left;
@@ -133,9 +143,8 @@ body {
 
 #all-posts li {
 	list-style-type: none;
-	border-bottom: 1px solid #b8b8b8;
-	padding: 6px 0;
-	min-height: 100px;
+	border-bottom: 1px solid #dddddd;
+	padding: 0;
 }
 
 #all-posts li:last-child {
@@ -145,13 +154,30 @@ body {
 #all-posts li .post_thumbnail {
 	float: left;
 	display: block;
-	margin-right: 10px;
+	margin: 5px;
 }
 
-#all-posts li a {
+#all-posts li a:link,
+#all-posts li a:visited {
 	text-decoration: none;
 	color: #c00;
 	display: block;
+	min-height: 110px;
+}
+
+#all-posts li a:hover,
+#all-posts li a:active {
+	background: #b8b8b8;
+}
+
+#all-posts li a .entry-title {
+	margin:0;
+	margin-bottom: 10px;
+	font-weight: 300;
+}
+
+#all-posts li a .date {
+	color: #333;
 }
 
 
@@ -198,7 +224,8 @@ body {
 #mainNavigation li a:active,
 #mainNavigation li.current a:link,
 #mainNavigation li.current a:visited {
-	background: #f99;
+	background: #f44;
+	color: #fff;
 }
 
 #mainNavigation li.omega a {
@@ -212,8 +239,8 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -64px;
-	margin-top: -64px;
+	margin-left: -16px;
+	margin-top: -16px;
 }
 
 #page-loader img {
@@ -244,14 +271,43 @@ h1 {
     text-align:center;
 }
 
-#single-data,
-#blog-content {
-	padding: 30px;
+#single-data {
+	padding: 10px;
 	padding-bottom: 75px;
 }
 
-#single-data p img {
+#blog-content {
+	padding-top: 46px;
+	padding-bottom: 50px;
+}
+
+#single-data img.post_thumbnail,
+#single-data .entry-content img {
 	max-width: 100%;
+	min-width: 100%;
+	height: auto;
+	display: block;
+}
+
+#single-data .entry-title {
+	font-size: 2.4em;
+	margin-bottom: 10px;
+}
+
+#single-data .entry-content {
+	font-size: 1.2em;
+}
+
+#single-data .entry-content a:link,
+#single-data .entry-content a:visited {
+	color: #c00;
+	text-decoration: none;
+}
+
+#single-data .entry-content a:hover,
+#single-data .entry-content a:visited:hover {
+	text-decoration: underline;
+	color: #900;
 }
 
 .event {
