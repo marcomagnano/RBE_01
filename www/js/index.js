@@ -51,11 +51,100 @@ var app = {
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
-                    var source   = $("#blog-template").html();
-                    var template = Handlebars.compile(source);
-                    var blogData = template(data);
-                    $('#blog-data').html(blogData);
-                    $('#blog-data').trigger('create');
+                    
+                    var allposts = data.posts,
+                    	buffy = '';
+                    
+                    $.each(allposts,function(postid, postcontent) {
+                    	
+                    	var basedate = new Date(postcontent.date),
+							basemonth = basedate.getMonth()+1,
+							post_thumbnail = '';
+							
+						var itadate = basedate.getDate() + ' ';
+							
+						switch(basemonth) {
+							case 1:
+							itadate += 'gennaio';
+							break;
+							
+							case 2:
+							itadate += 'febbraio';
+							break;
+							
+							case 3:
+							itadate += 'marzo';
+							break;
+							
+							case 4:
+							itadate += 'aprile';
+							break;
+							
+							case 5:
+							itadate += 'maggio';
+							break;
+							
+							case 6:
+							itadate += 'giugno';
+							break;
+							
+							case 7:
+							itadate += 'luglio';
+							break;
+							
+							case 8:
+							itadate += 'agosto';
+							break;
+							
+							case 9:
+							itadate += 'settembre';
+							break;
+							
+							case 10:
+							itadate += 'ottobre';
+							break;
+							
+							case 11:
+							itadate += 'novembre';
+							break;
+							
+							case 12:
+							itadate += 'dicembre';
+							break;
+						}
+						
+						itadate += ' ' + basedate.getFullYear();
+						
+                    	$.each(postcontent.attachments,function(attid, attcontent) {
+                    		if(attcontent.mime_type == 'image/jpeg') {
+	                    		post_image = attcontent.url;
+	                    		return false;
+                    		}
+                    	});
+                    	
+                    	if(post_image == '') {
+	                    	post_thumbnail = 'img/noimage.png';
+                    	} else {
+	                    	post_thumbnail = post_image.replace('.jpg','-150x150.jpg');
+                    	}
+                    	
+                    	
+                    	
+	                    buffy += '<li>';
+	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
+	                	buffy += '<h2 class="entry-title"><a data-transition="slide" href="rbe-detail.html?' + postid + '">' + postcontent.title + '</a></h2>';
+	                	buffy += '<span class="date">' + itadate + '</span>';
+	                	buffy += '</li>';
+                    });
+                    
+                    $('#all-posts').html(buffy);
+                    
+                    //var source   = $("#blog-template").html();
+                    //var template = Handlebars.compile(source);
+                    //var blogData = template(data);
+                    //$('#blog-data').html(blogData);
+                    //$('#blog-data').trigger('create');
+                    
                     dfd.resolve(data);
 
                 },
@@ -85,11 +174,99 @@ var app = {
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
-                    var source   = $("#blog-template").html();
-                    var template = Handlebars.compile(source);
-                    var blogData = template(data);
-                    $('#blog-data').html(blogData);
-                    $('#blog-data').trigger('create');
+                    var allposts = data.posts,
+                    	buffy = '';
+                    
+                    $.each(allposts,function(postid, postcontent) {
+                    	
+                    	var basedate = new Date(postcontent.date),
+							basemonth = basedate.getMonth()+1,
+							post_thumbnail = '';
+							
+						var itadate = basedate.getDate() + ' ';
+							
+						switch(basemonth) {
+							case 1:
+							itadate += 'gennaio';
+							break;
+							
+							case 2:
+							itadate += 'febbraio';
+							break;
+							
+							case 3:
+							itadate += 'marzo';
+							break;
+							
+							case 4:
+							itadate += 'aprile';
+							break;
+							
+							case 5:
+							itadate += 'maggio';
+							break;
+							
+							case 6:
+							itadate += 'giugno';
+							break;
+							
+							case 7:
+							itadate += 'luglio';
+							break;
+							
+							case 8:
+							itadate += 'agosto';
+							break;
+							
+							case 9:
+							itadate += 'settembre';
+							break;
+							
+							case 10:
+							itadate += 'ottobre';
+							break;
+							
+							case 11:
+							itadate += 'novembre';
+							break;
+							
+							case 12:
+							itadate += 'dicembre';
+							break;
+						}
+						
+						itadate += ' ' + basedate.getFullYear();
+						
+                    	$.each(postcontent.attachments,function(attid, attcontent) {
+                    		if(attcontent.mime_type == 'image/jpeg') {
+	                    		post_image = attcontent.url;
+	                    		return false;
+                    		}
+                    	});
+                    	
+                    	if(post_image == '') {
+	                    	post_thumbnail = 'img/noimage.png';
+                    	} else {
+	                    	post_thumbnail = post_image.replace('.jpg','-150x150.jpg');
+                    	}
+                    	
+                    	
+                    	
+	                    buffy += '<li>';
+	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
+	                	buffy += '<h2 class="entry-title"><a data-transition="slide" href="vp-detail.html?' + postid + '">' + postcontent.title + '</a></h2>';
+	                	buffy += '<span class="date">' + itadate + '</span>';
+	                	buffy += '</li>';
+                    });
+                    
+                    $('#all-posts').html(buffy);
+                    
+                    //var source   = $("#blog-template").html();
+                    //var template = Handlebars.compile(source);
+                    //var blogData = template(data);
+                    //$('#blog-data').html(blogData);
+                    //$('#blog-data').trigger('create');
+                    
                     dfd.resolve(data);
 
                 },
@@ -127,5 +304,4 @@ var app = {
             $('#single-data').html(postData);
 
     }
-
 };

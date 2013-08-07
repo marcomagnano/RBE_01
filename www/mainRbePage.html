@@ -10,9 +10,9 @@
         <title>RBE</title>
     </head>
     <body>
-    <div id="page-loader"><img src="img/ajax-loader.gif" alt="ajax-loader" width="128" height="128" /></div>
+    <div id="page-loader"><img src="img/ajax-loader.gif" alt="ajax-loader" width="32" height="32" /></div>
     <div id="blog-page" data-role="page">
-	    <div data-role="header">
+	    <div data-role="header" id="header">
 	        <h1>RBE – Ultimi articoli</h1>
 	    </div><!-- /#header -->
     
@@ -21,25 +21,15 @@
 	        
 	        <div id="blog-data"></div>
 	
-	
-	        <script id="blog-template" type="text/x-handlebars-template">
 	            <ul data-role="listview" data-inset="true" id="all-posts">
-	            
-	            {{#each posts}}
-	                
-	                <li>
-	                	<a data-transition="slide" href="rbe-detail.html?{{@index}}">{{title}}</a>
-	                </li>
 	
-	            {{/each}}
 	            </ul>
-	        </script>
 	    </div><!-- /#home-page -->
     
 	    <div data-role="footer" id="footer">
 			<ul id="mainNavigation">
 	    		<li class="alpha"><a href="index.html">Streaming</a></li>
-	    		<li><a href="mainRbePage.html">RBE</a></li>
+	    		<li class="current"><a href="mainRbePage.html">RBE</a></li>
 	    		<li class="omega"><a href="mainVpPage.html">Voci Protestanti</a></li>
 			</ul>
 		</div>
