@@ -36,8 +36,9 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'Roboto','HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
+    font-weight: 300;
     height:100%;
     margin:0px;
     padding:0px;
@@ -107,6 +108,21 @@ body {
 	left: 0;
 	bottom: 0;
 	z-index: 999;
+}
+
+#page-loader {
+	display: none;
+	width: 128px;
+	height: 128px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -64px;
+	margin-top: -64px;
+}
+
+#page-loader img {
+	display: block;
 }
 
 .ui-content {

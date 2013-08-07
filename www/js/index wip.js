@@ -51,23 +51,31 @@ var app = {
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
-                    var source   = $("#blog-template").html();
-                    var template = Handlebars.compile(source);
-                    var blogData = template(data);
-                    $('#blog-data').html(blogData);
-                    $('#blog-data').trigger('create');
+                    //var source   = $("#blog-template").html();
+                    //var template = Handlebars.compile(source);
+                    //var blogData = template(data);
+                    //$('#blog-data').html(blogData);
+                    //$('#blog-data').trigger('create');
+                    
+                    //var jobj = parseJSON(data);
+                    var allposts = data.posts;
+                    
+                    $.each( allposts, function() {
+	                	 
+                    });
+                    
+                    $('#blog-data').append( data.count );
                     dfd.resolve(data);
-
                 },
                 error: function(data){
                     console.log(data);
                 }
             });
+            $('#page-loader').fadeOut(600);
             return dfd.promise();
         };
 
         getBlogs().then(function(data){
-        	$('#page-loader').fadeOut(600);
             $('#all-posts').on('click','li', function(e){                
                 localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
             });
@@ -78,7 +86,6 @@ var app = {
     
     VPblog: function(){
         function getVPBlogs() {
-        	$('#page-loader').fadeIn(600);
             var dfd = $.Deferred();
             $.ajax({
                 url: 'http://vociprotestanti.it/api/get_recent_posts/',
@@ -101,7 +108,6 @@ var app = {
         };
 
         getVPBlogs().then(function(data){
-        	$('#page-loader').fadeOut(600);
             $('#all-posts').on('click','li', function(e){                
                 localStorage.setItem('postData', JSON.stringify(data.posts[$(this).index()]));
             });
