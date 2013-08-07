@@ -10,6 +10,24 @@ Handlebars.registerHelper("debug", function(optionalValue) {
   }
 });
 
+function playStream() {
+  try {
+    var myaudio = new Audio('http://stream15.top-ix.it/radiobeckwith.ogg');
+    myaudio.id = 'playerMyAdio';
+    myaudio.play();
+  } catch (e) {
+    alert('no audio support!');
+  } 
+}
+
+function stopStream() {
+  try {
+    myaudio.stop();
+  } catch (e) {
+    alert('no audio support!');
+  } 
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -225,7 +243,8 @@ var app = {
             //$('#single-data').html(postData);
             var postDataStorage = localStorage.getItem('postData'),
             	postData = JSON.parse(postDataStorage),
-            	buffy = '';
+            	buffy = '',
+            	content = postData.content.replace('<a ', '<a target="_blank" ');
             //console.log(postData);
             
             var post_thumbnail = postData.thumbnail;
@@ -261,7 +280,7 @@ var app = {
             if(post_thumbnail != '' && post_thumbnail != null) {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
-            	buffy += '<div class="entry-content">' + postData.content + '</div>';
+            	buffy += '<div class="entry-content">' + content + '</div>';
             
             $('#single-data').html(buffy);
     },
@@ -275,7 +294,8 @@ var app = {
             
             var postDataStorage = localStorage.getItem('postData'),
             	postData = JSON.parse(postDataStorage),
-            	buffy = '';
+            	buffy = '',
+            	content = postData.content.replace('<a ', '<a target="_blank" ');
             //console.log(postData);
             
             var post_thumbnail = postData.thumbnail,
@@ -308,7 +328,7 @@ var app = {
             if(post_thumbnail != '') {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
-            	buffy += '<div class="entry-content">' + postData.content + '</div>';
+            	buffy += '<div class="entry-content">' + content + '</div>';
             
             $('#single-data').html(buffy);
     }
