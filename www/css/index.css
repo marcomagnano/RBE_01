@@ -133,6 +133,14 @@ h1 {
     text-align:center;
 }
 
+#single-data {
+	padding: 50px;
+}
+
+#single-data p img {
+	max-width: 100%;
+}
+
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
