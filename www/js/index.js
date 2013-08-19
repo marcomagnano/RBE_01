@@ -1,33 +1,3 @@
-Handlebars.registerHelper("debug", function(optionalValue) {
-  console.log("Current Context");
-  console.log("====================");
-  console.log(this);
- 
-  if (optionalValue) {
-    console.log("Value");
-    console.log("====================");
-    console.log(optionalValue);
-  }
-});
-
-function playStream() {
-  try {
-    var myaudio = new Audio('http://stream15.top-ix.it/radiobeckwith.ogg');
-    myaudio.id = 'playerMyAudio';
-    myaudio.play();
-  } catch (e) {
-    alert('no audio support!');
-  } 
-}
-
-function stopStream() {
-  try {
-    myaudio.stop();
-  } catch (e) {
-    alert('no audio support!');
-  } 
-}
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -58,7 +28,12 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-
+    
+    stream: function() {
+		$('#player2').mediaelementplayer({
+			audioWidth: '100%'
+		});  
+    },
 
     blog: function(){
         function getBlogs() {
