@@ -29,10 +29,27 @@ var app = {
         console.log('Received Event: ' + id);
     },
     
-    stream: function() {
-		$('#player2').mediaelementplayer({
-			audioWidth: '100%'
-		});  
+    rbestream: function() {
+		var activeSong;
+		function playStream(id){
+			activeSong = document.getElementById(id);
+			activeSong.play();
+		}
+		function pauseStream(){
+			activeSong.pause();
+		}
+		
+		$('#playbutton').click(function() {
+			$(this).hide();
+			$('#pausebutton').show();
+			playStream('song');
+		});
+		$('#pausebutton').click(function() {
+			$(this).hide();
+			$('#playbutton').show();
+			pauseStream();
+		});
+		
     },
 
     blog: function(){

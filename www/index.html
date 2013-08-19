@@ -19,13 +19,13 @@
         	</div>
         	
         	<div data-role="content">
+        		<br /><br /><br />
         		<div class="audio-container">
-        			<br /><br /><br />
-        			<h3>Ascoltaci in streaming</h3>
-        			<br /><br /><br />
-					<audio id="player2" controls="controls">
-						<source type="audio/ogg" src="http://stream15.top-ix.org/radiobeckwith" />
-					</audio>
+        			<audio id="song" width="300" height="32" controls="controls">
+        				<source src="http://stream15.top-ix.org:80/radiobeckwith" type="audio/mp3" />
+        			</audio>
+        			<div id="playbutton">play</div>
+        			<div id="pausebutton">pause</div>
 				</div>
         		
         	</div>
@@ -52,7 +52,7 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             
-            app.stream();
+            app.rbestream();
         </script>
     </body>
 </html>
