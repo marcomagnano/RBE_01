@@ -13,7 +13,7 @@ Handlebars.registerHelper("debug", function(optionalValue) {
 function playStream() {
   try {
     var myaudio = new Audio('http://stream15.top-ix.it/radiobeckwith.ogg');
-    myaudio.id = 'playerMyAdio';
+    myaudio.id = 'playerMyAudio';
     myaudio.play();
   } catch (e) {
     alert('no audio support!');

@@ -131,7 +131,6 @@ body {
 	background-image: url(../img/go-back_icon.png);
 }
 
-#header .goBack:hover,
 #header .goBack:active {
 	background-color: #b8b8b8;
 }
