@@ -132,7 +132,8 @@ var app = {
 
                 },
                 error: function(data){
-                    console.log(data);
+                	$('#page-loader').fadeOut(600);
+                    $('#all-posts').html("<br /><br /><h3>La connessione è assente. Riprova più tardi.</h3>");
                 }
             });
             return dfd.promise();
