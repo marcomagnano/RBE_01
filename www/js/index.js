@@ -278,6 +278,7 @@ var app = {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
+            	buffy += '<div class="go-to">' + postData.url + '</div>';
             
             $('#single-data').html(buffy);
     },
@@ -330,3 +331,8 @@ var app = {
             $('#single-data').html(buffy);
     }
 };
+
+function openExternal(url) {
+	fixurl = encodeURI(url);
+	window.open(fixurl, '_system', 'location=yes');
+}
