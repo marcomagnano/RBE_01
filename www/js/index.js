@@ -284,7 +284,7 @@ var app = {
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
             	buffy += '<div class="go-to">';
-            	buffy += '<a href="javascript:openExternal(' + postData.url + ')">';
+            	buffy += '<a href="' + postData.url + '" target="_blank">';
             	buffy += 'Leggi l’articolo sul sito';
             	buffy += '</a>';
             	buffy += '</div>';
