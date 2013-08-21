@@ -278,7 +278,11 @@ var app = {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
-            	buffy += '<div class="go-to">' + postData.url + '</div>';
+            	buffy += '<div class="go-to">';
+            	buffy += '<a href="#nogo" onClick="openExternal(' + postData.url + ')">';
+            	buffy += 'Leggi l’articolo sul sito';
+            	buffy += '</a>';
+            	buffy += '</div>';
             
             $('#single-data').html(buffy);
     },
