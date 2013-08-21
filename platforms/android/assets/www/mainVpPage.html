@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>RBE</title>
+    </head>
+    <body>
+	<div id="page-loader"><img src="img/ajax-loader.gif" alt="ajax-loader" width="32" height="32" /></div>
+    <div id="blog-page" data-role="page">
+    <div data-role="header" id="header">
+        <img id="logo-vp" class="logo" src="img/logo-vp.png" alt="logo-rbe" width="255" height="45" />
+    </div><!-- /#header -->
+    
+    <div id="blog-content" data-role="content">
+        
+        
+        <div id="blog-data"></div>
+            <ul data-role="listview" data-inset="true" id="all-posts">
+                
+            </ul>
+    </div><!-- /#home-page -->
+    
+    <div data-role="footer" id="footer">
+		<ul id="mainNavigation">
+    		<li class="alpha"><a href="index.html">Streaming</a></li>
+    		<li><a href="mainRbePage.html">RBE</a></li>
+    		<li class="omega current"><a href="mainVpPage.html">VP</a></li>
+		</ul>
+	</div>
+    </div>
+
+
+
+    
+
+
+
+        <!--<script type="text/javascript" src="phonegap.js"></script>-->
+        <script src="js/libs/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/libs/handlebars.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            
+            app.VPblog();
+        </script>
+    </body>
+</html>

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.rbe" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>RBE – Applicazione ufficiale</name>
+    <name>RBE – Radio Beckwith</name>
     <description>
         Streaming, feeds di rbe.it e di VociProtestanti.
     </description>
-    <author email="marco@meltingmedia.it" href="http://www.meltingmedia.it">
-        MeltingMedia
+    <author email="marco.magnano@rbe.it" href="http://www.rbe.it">
+        Radio Beckwith
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     
@@ -13,7 +13,7 @@
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="false" />
+    <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -50,5 +50,7 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
+    
+    <gap:plugin name="Media" value="org.apache.cordova.AudioHandler" />
     <access origin="*" />
 </widget>

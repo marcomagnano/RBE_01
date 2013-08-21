@@ -272,6 +272,30 @@ body {
 	padding-bottom: 50px !important;
 }
 
+#splasher {
+	height: 430px;
+	width: 320px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -215px;
+	margin-left: -160px;
+}
+
+#splasher img {
+	display: block;
+}
+
+#splasher h3 {
+	line-height: 30px;
+	text-align: center;
+	font-weight: normal;
+	font-size: 1.5em;
+	color: #c00;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
 /*#song {
 	display: none;
 }*/
