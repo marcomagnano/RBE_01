@@ -55,6 +55,7 @@
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/me \
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/noimage.png \
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/pause_icon.png \
+/Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/pazzello_big.png \
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/play_icon.png \
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/me/background.png \
 /Users/pinoch/Documents/Lavori/Apps/RBE_01/platforms/android/assets/www/img/me/bigplay.png \
