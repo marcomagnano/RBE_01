@@ -33,7 +33,7 @@ var app = {
     	var myMedia = null;
 		var playing = false;
 		
-		myMedia = new Media("http://stream15.top-ix.org:80/radiobeckwith");
+		myMedia = new Media("http://stream15.top-ix.org:80/radiobeckwith",function() { alert("Stream loaded"); },function() { alert("Stream error"); });
 		
 		
 		function playAudio() {
