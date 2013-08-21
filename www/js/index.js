@@ -284,9 +284,9 @@ var app = {
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
             	buffy += '<div class="go-to">';
-            	buffy += '<a href="' + postData.url + '" target="_blank">';
+            	buffy += '<button onclick="openExternal(' + postData.url + ')">';
             	buffy += 'Leggi l’articolo sul sito';
-            	buffy += '</a>';
+            	buffy += '</button>';
             	buffy += '</div>';
             
             $('#single-data').html(buffy);
