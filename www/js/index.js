@@ -30,25 +30,28 @@ var app = {
     },
     
     rbestream: function() {
-    	
-		var activeSong;
-		function playStream(id){
-			activeSong = document.getElementById(id);
-			activeSong.play();
+    	var myMedia = null;
+		var playing = false;
+		
+		myMedia = new Media("http://stream15.top-ix.org:80/radiobeckwith");
+		
+		
+		function playAudio() {
+			myMedia.play();
 		}
-		function pauseStream(){
-			activeSong.pause();
+		function stopAudio() {
+			myMedia.stop();
 		}
 		
 		$('#playbutton').click(function() {
 			$(this).hide();
 			$('#pausebutton').show();
-			playStream('song');
+			playAudio();
 		});
 		$('#pausebutton').click(function() {
 			$(this).hide();
 			$('#playbutton').show();
-			pauseStream();
+			stopAudio();
 		});
 		
     },
