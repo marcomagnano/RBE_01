@@ -112,7 +112,7 @@ var app = {
 	                    buffy += '<li><a data-transition="slide" href="rbe-detail.html?' + postid + '">';
 	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
 	                	buffy += '<h2 class="entry-title">' + postcontent.title + '</h2>';
-	                	buffy += '<span class="date">' + itadate + '</span>';
+	                	buffy += '<span class="listingmeta">' + itadate + ' - ' + postcontent.comment_count + ' commenti</span>';
 	                	buffy += '</a></li>';
                     });
                     
@@ -283,11 +283,11 @@ var app = {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
-            	buffy += '<p class="go-to">';
-            	buffy += '<a href="#" onclick="window.open(\'' + postData.url + '\', \'_blank\', \'location=yes\');">';
-            	buffy += 'Leggi l’articolo sul sito';
-            	buffy += '</a>';
-            	buffy += '</p>';
+            	//buffy += '<p class="go-to">';
+            	//buffy += '<a href="#" onclick="window.open(\'' + postData.url + '\', \'_blank\', \'location=yes\');">';
+            	//buffy += 'Leggi l’articolo sul sito';
+            	//buffy += '</a>';
+            	//buffy += '</p>';
             
             $('#single-data').html(buffy);
     },
