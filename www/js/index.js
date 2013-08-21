@@ -30,6 +30,9 @@ var app = {
     },
     
     rbestream: function() {
+    	
+    	alert("Stream!");
+    	
 		var activeSong;
 		function playStream(id){
 			activeSong = document.getElementById(id);
