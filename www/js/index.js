@@ -283,11 +283,11 @@ var app = {
 	        	buffy += '<img src="' + post_image + '" class="post_thumbnail" />';    
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
-            	buffy += '<div class="go-to">';
-            	buffy += '<button onclick="openExternal(' + postData.url + ')">';
+            	buffy += '<p class="go-to">';
+            	buffy += '<a href="#" onclick="window.open(\'' + postData.url + '\', \'_blank\', \'location=yes\');">';
             	buffy += 'Leggi l’articolo sul sito';
-            	buffy += '</button>';
-            	buffy += '</div>';
+            	buffy += '</a>';
+            	buffy += '</p>';
             
             $('#single-data').html(buffy);
     },
