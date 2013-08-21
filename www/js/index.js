@@ -150,7 +150,7 @@ var app = {
         	$('#page-loader').fadeIn(600);
             var dfd = $.Deferred();
             $.ajax({
-                url: 'http://vociprotestanti.it/api/get_recent_posts/',
+                url: 'http://vociprotestanti.it/api/get_category_posts/?slug=news/',
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
@@ -200,7 +200,7 @@ var app = {
 	                    buffy += '<li><a data-transition="slide" href="vp-detail.html?' + postid + '">';
 	                    buffy += '<img class="post_thumbnail" src="' + post_thumbnail + '" width="100" height="100" title="' + postcontent.title  + '" />';
 	                	buffy += '<h2 class="entry-title">' + postcontent.title + '</h2>';
-	                	buffy += '<span class="date">' + itadate + '</span>';
+	                	buffy += '<span class="listingmeta">' + itadate + ' - ' + postcontent.comment_count + ' commenti</span>';
 	                	buffy += '</a></li>';
                     });
                     
