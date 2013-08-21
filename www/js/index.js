@@ -279,7 +279,7 @@ var app = {
             }
             	buffy += '<div class="entry-content">' + content + '</div>';
             	buffy += '<div class="go-to">';
-            	buffy += '<a href="#nogo" onClick="openExternal(' + postData.url + ')">';
+            	buffy += '<a href="javascript:openExternal(' + postData.url + ')">';
             	buffy += 'Leggi l’articolo sul sito';
             	buffy += '</a>';
             	buffy += '</div>';
