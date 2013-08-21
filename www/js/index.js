@@ -270,6 +270,11 @@ var app = {
 				case 12: 	itadate += 'dicembre'; 	break;
 			}
 			
+			function openExternal(url) {
+				fixurl = encodeURI(url);
+				window.open(fixurl, '_system', 'location=yes');
+			}
+			
 			itadate += ' ' + basedate.getFullYear();
             
             	buffy += '<h1 class="entry-title">' + postData.title + '</h1>';
@@ -335,8 +340,3 @@ var app = {
             $('#single-data').html(buffy);
     }
 };
-
-function openExternal(url) {
-	fixurl = encodeURI(url);
-	window.open(fixurl, '_system', 'location=yes');
-}
