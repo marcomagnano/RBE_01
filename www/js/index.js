@@ -271,10 +271,6 @@ var app = {
 			break;
 		}
 
-		function openExternal(url) {
-			fixurl = encodeURI(url);
-			window.open(fixurl, '_system', 'location=yes');
-		}
 		itadate += ' ' + basedate.getFullYear();
 		buffy += '<h1 class="entry-title">' + postData.title + '</h1>';
 		buffy += '<span class="entry-date">' + itadate + '</span>';
